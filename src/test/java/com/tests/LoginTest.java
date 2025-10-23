@@ -2,6 +2,7 @@ package com.tests;
  
 import com.pages.LoginPage;
 import com.pages.SearchUserPage;
+import com.microsoft.playwright.Locator;
 import com.pages.AdminPage;
 import com.pages.DeleteUserPage;
 import com.pages.EditUserPage;
@@ -28,7 +29,8 @@ public class LoginTest extends TestBase {
         adminPage.clickAddButton();
         adminPage.fillUserDetails(empName, newUserName, newUserPassword, newUserConfirmPassword);
         adminPage.saveUser();
-        page.waitForSelector("text=Successfully Saved");
+        page.locator("text=Successfully Saved").waitFor(new Locator.WaitForOptions().setTimeout(60000)); 
+
         System.out.println("New admin user created successfully.");
  
         SearchUserPage searchUserPage = new SearchUserPage(page);
