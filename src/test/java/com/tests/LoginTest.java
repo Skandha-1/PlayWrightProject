@@ -37,12 +37,13 @@ public class LoginTest extends TestBase {
         String searchRole = ConfigReader.readPropertyFileData("searchRole", "config");
         String searchStatus = ConfigReader.readPropertyFileData("searchStatus", "config");
         searchUserPage.searchUser(newUserName, searchRole, searchStatus);
- 
+        page.locator("text=Successfully Saved").waitFor(new Locator.WaitForOptions().setTimeout(20000)); 
         EditUserPage editUserPage = new EditUserPage(page);
         String newStatus = ConfigReader.readPropertyFileData("newStatus", "config");
         editUserPage.editUserStatus(newUserName, newStatus);
- 
+        page.locator("text=Successfully Saved").waitFor(new Locator.WaitForOptions().setTimeout(20000)); 
         DeleteUserPage deleteUserPage = new DeleteUserPage(page);
         deleteUserPage.deleteUser();
+        page.locator("text=Successfully Saved").waitFor(new Locator.WaitForOptions().setTimeout(20000)); 
     }
 }
